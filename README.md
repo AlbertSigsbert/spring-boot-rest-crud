@@ -3,4 +3,5 @@
 
  ## Topics Covered
  - Jackson POJO/JSON Data Binding
- - Path Variables 
+ - Path Variables
+ - Exception Handling
