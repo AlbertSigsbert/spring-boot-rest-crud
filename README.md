@@ -4,4 +4,5 @@
  ## Topics Covered
  - Jackson POJO/JSON Data Binding
  - Path Variables
- - Exception Handling
+ - Exception Handling (@ExceptionHandler)
+ - Global Exception Handling (@AControllerAdvice)
