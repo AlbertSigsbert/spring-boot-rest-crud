@@ -6,21 +6,17 @@ package com.albert.demo.rest;
 import com.albert.demo.entity.Employee;
 import com.albert.demo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
-
     private final EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRestController(EmployeeService theEmployeeService) {
+    public EmployeeRestController(EmployeeService theEmployeeService)   {
         employeeService = theEmployeeService;
     }
 
@@ -38,6 +34,22 @@ public class EmployeeRestController {
         }
 
         return theEmployee;
+    }
+
+
+    //add new employee
+    @PostMapping("/employees")
+    public Employee saveEmployee(@RequestBody  Employee theEmployee){
+        //set id 0 to force an insert instead of update in case user post an id
+        theEmployee.setId(0);
+
+        return employeeService.save(theEmployee);
+    }
+
+    //update an existing employee
+    @PutMapping("/employees")
+    public Employee updateEmployee (@RequestBody Employee theEmployee){
+        return employeeService.save(theEmployee);
     }
 }
 
